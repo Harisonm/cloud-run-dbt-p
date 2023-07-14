@@ -1,0 +1,25 @@
+eighth-parity-392414:  # your profile name from dbt_project.yml
+  target: dev  # your development environment
+  outputs:
+    
+    dev:
+      type: bigquery
+      method: service-account
+      project: eighth-parity-392414  # name of the project in BigQuery
+      dataset: ds_edw  # your dataset for development (usually your name)
+      threads: 4
+      keyfile: /secrets/dbt-service-keyfile
+      timeout_seconds: 300
+      priority: interactive
+      retries: 1
+    
+    prod: # your production environment
+      type: bigquery
+      method: service-account
+      project: eighth-parity-392414  # name of the project in BigQuery
+      dataset: ds_edw  # your dataset for production
+      threads: 4
+      keyfile: /secrets/dbt-service-keyfile
+      timeout_seconds: 300
+      priority: interactive
+      retries: 1

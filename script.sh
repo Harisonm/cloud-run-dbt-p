@@ -4,3 +4,5 @@ dbt debug --target dev --profiles-dir profiles/big_query
 dbt debug --target prod --profiles-dir profiles/big_query
 dbt run --target prod --profiles-dir profiles/big_query
 dbt test --data --target dev --profiles-dir profiles/big_query
+#
+gsutil mb gs://dbt-platform

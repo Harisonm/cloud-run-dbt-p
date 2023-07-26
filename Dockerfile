@@ -1,13 +1,22 @@
-FROM golang:1.20 as builder
-WORKDIR /app
-COPY invoke.go ./
-RUN GO111MODULE=off CGO_ENABLED=0 GOOS=linux go build -v -o server
+FROM python:3.11-slim as builder
+
+ENV PYTHONUNBUFFERED True
+
+# Copy local code to the container image.
+ENV APP_HOME /app
+WORKDIR $APP_HOME
+COPY . ./
+
+# Install production dependencies.
+RUN pip install --no-cache-dir -r requirements.txt
 
 FROM ghcr.io/dbt-labs/dbt-bigquery:1.5.3
 USER root
 WORKDIR /dbt
 COPY --from=builder /app/server ./
 COPY script.sh ./
+COPY requirements.txt ./
 COPY . ./
+RUN pip install --no-cache-dir -r requirements.txt
 
-ENTRYPOINT "./server"
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app

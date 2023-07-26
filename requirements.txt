@@ -13,9 +13,12 @@ dbt-extractor==0.4.1
 future==0.18.3
 google-api-core==2.11.1
 google-auth==2.22.0
+google-cloud-appengine-logging==1.3.1
+google-cloud-audit-log==0.2.5
 google-cloud-bigquery==3.11.3
 google-cloud-core==2.3.3
 google-cloud-dataproc==5.4.2
+google-cloud-logging==3.6.0
 google-cloud-storage==2.10.0
 google-crc32c==1.5.0
 google-resumable-media==2.5.0
@@ -59,5 +62,3 @@ text-unidecode==1.3
 typing_extensions==4.7.1
 urllib3==1.26.16
 Werkzeug==2.3.6
-Flask==2.1.0
-gunicorn==20.1.0

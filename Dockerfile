@@ -9,7 +9,7 @@ ENV PYTHONUNBUFFERED 1
 # Install production dependencies.
 RUN pip install --no-cache-dir -r requirements.txt
 
-FROM ghcr.io/dbt-labs/dbt-bigquery:1.5.3
+FROM python:3.10.7-slim-buster
 USER root
 WORKDIR /dbt
 COPY --from=builder /app ./

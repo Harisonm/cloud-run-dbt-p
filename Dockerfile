@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 FROM ghcr.io/dbt-labs/dbt-bigquery:1.5.3
 USER root
 WORKDIR /dbt
-COPY --from=builder /app/server ./
+COPY --from=builder /app ./
 COPY script.sh ./
 COPY requirements.txt ./
 COPY . ./

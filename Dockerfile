@@ -1,4 +1,4 @@
-FROM python:3.10.7-slim-buster
+FROM python:3.10.7-slim-buster AS builder
 
 # set work directory
 ENV APP_HOME /app

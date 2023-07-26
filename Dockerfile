@@ -1,6 +1,8 @@
 FROM python:3.11-slim as builder
 
 ENV PYTHONUNBUFFERED True
+ENV PORT 8080
+ENV HOST 0.0.0.0
 
 # Copy local code to the container image.
 ENV APP_HOME /app

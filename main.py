@@ -1,4 +1,3 @@
-from bigquery_public_data import app,db
 import os
 import sys
 from google.cloud import logging
@@ -6,9 +5,6 @@ import subprocess
 from flask import Flask
 # Instantiates a client
 client = logging.Client()
-
-with app.app_context():
-    db.create_all()
     
 app = Flask(__name__)
 

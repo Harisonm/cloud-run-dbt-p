@@ -5,7 +5,7 @@ ENV APP_HOME /app
 WORKDIR $APP_HOME
 COPY . ./
 # allow statements and log message to immediately appear in the Knative logs
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONUNBUFFERED True
 # Install production dependencies.
 RUN pip install --no-cache-dir -r requirements.txt
 
@@ -21,6 +21,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 # copy project
 COPY . .
 
-EXPOSE 5000
-
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 run:app
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app

@@ -16,7 +16,7 @@ def hello_world():
 
 @app.route("/dbt")
 def launch_dbt():
-    process = subprocess.run(['dbt', 'docs generate'], 
+    process = subprocess.run(['dbt docs generate'], 
                          stdout=subprocess.PIPE, 
                          universal_newlines=True)
     process
